@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100vw" height="100vh"
+     viewBox="0 0 1920 1080" preserveAspectRatio="none">
+
+  <defs>
+
+    <!-- Animated Gradient -->
+    <radialGradient id="grad" cx="50%" cy="50%" r="80%">
+      <stop offset="0%" stop-color="#ff00ff">
+        <animate attributeName="stop-color"
+                 values="#ff00ff;#00ffff;#ff0000;#ffff00;#00ff00;#ff00ff"
+                 dur="1s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+    <!-- Turbulence Distortion -->
+    <filter id="distort" x="-50%" y="-50%" width="200%" height="200%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01 0.02"
+                    numOctaves="5" result="noise">
+        <animate attributeName="baseFrequency"
+                 values="0.01 0.02;0.1 0.2;0.01 0.02"
+                 dur="2s" repeatCount="indefinite"/>
+      </feTurbulence>
+
+      <feDisplacementMap in="SourceGraphic"
+                         in2="noise"
+                         scale="150">
+        <animate attributeName="scale"
+                 values="50;400;50"
+                 dur="1.5s"
+                 repeatCount="indefinite"/>
+      </feDisplacementMap>
+
+      <feGaussianBlur stdDeviation="10">
+        <animate attributeName="stdDeviation"
+                 values="5;25;5"
+                 dur="1s"
+                 repeatCount="indefinite"/>
+      </feGaussianBlur>
+    </filter>
+
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#grad)"/>
+
+  <!-- Massive Animated Grid -->
+  <g filter="url(#distort)">
+
+    <!-- Generate many animated circles -->
+    <g>
+      <!-- Duplicate block many times for heavy load -->
+      <circle cx="960" cy="540" r="400" fill="none" stroke="#ffffff" stroke-width="5">
+        <animate attributeName="r" values="100;800;100"
+                 dur="2s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform"
+                          type="rotate"
+                          from="0 960 540"
+                          to="360 960 540"
+                          dur="1s"
+                          repeatCount="indefinite"/>
+      </circle>
+
+      <circle cx="960" cy="540" r="600" fill="none" stroke="#00ffff" stroke-width="8">
+        <animate attributeName="stroke-width"
+                 values="2;20;2"
+                 dur="0.5s"
+                 repeatCount="indefinite"/>
+      </circle>
+
+      <rect x="0" y="0" width="1920" height="1080"
+            fill="none" stroke="#ff00ff" stroke-width="30">
+        <animate attributeName="stroke-width"
+                 values="10;200;10"
+                 dur="1s"
+                 repeatCount="indefinite"/>
+      </rect>
+
+    </g>
+  </g>
+
+  <!-- Continuous rotation of whole scene -->
+  <animateTransform attributeName="transform"
+                    type="rotate"
+                    from="0 960 540"
+                    to="360 960 540"
+                    dur="3s"
+                    repeatCount="indefinite"/>
+
+</svg>

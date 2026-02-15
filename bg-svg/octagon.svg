@@ -1,0 +1,24 @@
+<svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <polygon 
+    points="60,10 140,10 190,60 190,140 140,190 60,190 10,140 10,60"
+    fill="none"
+    stroke="#ff0000"
+    stroke-width="6"
+    filter="url(#glow)">
+    
+    <animate attributeName="stroke" 
+             values="#ff0000; #ffff00; #00ff00; #ffffff; #00ffff; #0000ff" 
+             dur="2s" 
+             repeatCount="indefinite"/>
+  </polygon>
+</svg>

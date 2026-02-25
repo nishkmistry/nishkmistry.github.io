@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Direct Google to your sitemap
+Sitemap: https://[your-username].github.io/sitemap.xml
+
+# This encourages the crawler to visit your main profile
+# via the links on your indexed pages.
